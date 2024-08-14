@@ -1,0 +1,23 @@
+# Owner Info
+title: Liuying
+email: 178309223+liuying-y@users.noreply.github.com
+
+# build info
+source: src
+destination: docs
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - .tmp/
+  - .jekyll-cache/
+  - .gitignore
+  - README.md
+  - Rakefile
+  - _config.yml
+  - _config.sample.yml
+  - docs
+  - src
+

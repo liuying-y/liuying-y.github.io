@@ -1,0 +1,25 @@
+# Jekyll
+_site/
+.env
+.env*
+.jekyll-cache/
+.gem/
+.sass-cache/
+.bundler/
+.bundle/
+vendor/bundle/
+Gemfile.lock
+*.sublime-workspace
+*.swp
+*.log
+*.bak
+*.orig
+*.rej
+*.pyc
+*.swo
+*.swn
+*.swp
+*.swo
+*.swx
+*.swm
+*.swt
