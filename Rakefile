@@ -2,6 +2,8 @@ require 'rake'
 
 task :build do
   sh "bundle exec jekyll build"
+  sh "rm -rf docs"
+  sh "mv _site docs"
 end
 
 task :serve do
