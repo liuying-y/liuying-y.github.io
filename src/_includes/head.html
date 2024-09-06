@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <!-- head -->
 <head>
   <!-- Google tag (gtag.js) -->
@@ -12,16 +10,11 @@
     gtag('config', 'G-SSFR60SVY2');
   </script>
   <meta charset="utf-8">
-  <meta name="author" content="Liuying" />
+  <meta name="author" content="{{ site.author }}" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="icon" type="image/png" href="/assert/favicon.ico">
-  <meta name="description" content="Personal Output">
-  <meta name="keywords" content="Blog, Life-long Learner, Developer, Data Visualization, Video Games">
-  <title>Liuying&#39;s Site</title>
+  <link rel="icon" type="image/png" href="{{ site.favicon }}">
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta name="keywords" content="{{ page.keywords | default: site.keywords | strip_html | normalize_whitespace | escape }}">
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
 </head>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
-</html>
