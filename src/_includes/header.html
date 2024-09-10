@@ -1,4 +1,8 @@
 <!-- header -->
- <header>
-  
- </header>
+<header>
+  <nav>
+    {%- for nav_item in site.nav_bar_items -%}
+      <a href="{{ nav_item.page }}">{{ nav_item.label }}</a>
+    {%- endfor -%}
+  </nav>
+</header>
