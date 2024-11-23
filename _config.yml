@@ -44,14 +44,17 @@ external_social:
   -
     url: 
     icon:
-    alias: 
-  
-
-# Pages
-pages:
-  index: /
-  about: 
+    alias:
 
 ## operations
-google-analytics:
-  id: ""
+google_analytics:
+  id: "G-SSFR60SVY2"
+
+## nav bar settings
+nav_bar_items:
+  -
+    label: HOME
+    page: /
+  -
+    label: Posts
+    page: /post_list
