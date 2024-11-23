@@ -1,5 +1,17 @@
 <!-- header -->
+<style>
+header nav {
+  display: flex;
+}
+
+header nav a {
+  width: fit-content;
+  padding: 0 0.25rem;
+  margin: 0 0.25rem;
+}
+</style>
 <header>
+  <h1></h1>
   <nav>
     {%- for nav_item in site.nav_bar_items -%}
       <a href="{{ nav_item.page }}">{{ nav_item.label }}</a>

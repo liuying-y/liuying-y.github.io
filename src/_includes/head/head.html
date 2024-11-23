@@ -1,6 +1,6 @@
 <!-- head -->
 <head>
-  {% include head_google_analytics.html %}
+  {% include head/js/google_analytics.html %}
   <meta charset="utf-8">
   <meta name="author" content="{{ site.author }}" />
   <meta name="format-detection" content="telephone=no" />
@@ -9,5 +9,8 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
   <meta name="keywords" content="{{ page.keywords | default: site.keywords | strip_html | normalize_whitespace | escape }}">
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  {% include head_default_style.html %}
+  {% include head/css/vars.html %}
+  {% include head/css/default.html %}
+  {% include head/css/font.html %}
+  {% include head/css/common.html %}
 </head>
