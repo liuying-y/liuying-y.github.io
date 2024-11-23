@@ -26,9 +26,9 @@
     --ly-theme-c-1: #1e2022;
     --ly-theme-c-2: #52616b;
     --ly-theme-c-3: #c9d6df;
-    --ly-theme-c-3: #f0f5f9;
+    --ly-theme-c-4: #f0f5f9;
 
-    --ly-background-color: var(--ly-theme-c-3);
+    --ly-background-color: var(--ly-theme-c-4);
     --ly-font-color-1: var(--ly-theme-c-1);
     --ly-font-color-2: var(--ly-theme-c-2);
     --ly-font-color-3: var(--ly-theme-c-3);
@@ -39,7 +39,7 @@ html {
   margin: 0;
   padding: 0;
   font-size: 32px;
-  color: var(--ly-font-color-1);
+  color: var(--ly-font-color-2);
   background-color: var(--ly-background-color);
   min-width: 800px;
 }
@@ -62,6 +62,11 @@ html {
   padding: 0;
   border: 0;
   box-sizing: border-box;
+
+  font-family: 'main-font', 'PingFang SC';
+  --wght: 400;
+  --BEVL: 20;
+  font-variation-settings: 'wght' var(--wght), 'BEVL' var(--BEVL);
 }
 
 body, div, h1, h2, h3, h4, h5, h6, p, ol, ul, dl, figure, form, img, video, pre, iframe, blockquote, table {
@@ -70,8 +75,32 @@ body, div, h1, h2, h3, h4, h5, h6, p, ol, ul, dl, figure, form, img, video, pre,
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: var(--ly-font-color-1);
+  --wght: 700;
+  --BEVL: 100;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+
+}
+h5 {
+  font-size: 1.4rem;
+}
+h6 {
   font-size: 1rem;
-  font-weight: normal;
 }
 
 a {
@@ -98,6 +127,13 @@ table {
 }
 </style>
   <style>
+@font-face {
+  font-family: 'main-font';
+  src: url("//liuyingpro-website.oss-cn-beijing.aliyuncs.com/fonts/main-font/AlimamaFangYuanTiVF-Thin.woff2") format("woff2"), url("//liuyingpro-website.oss-cn-beijing.aliyuncs.com/fonts/main-font/AlimamaFangYuanTiVF-Thin.woff") format("woff");
+  font-display: swap;
+}
+</style>
+  <style>
 
 </style>
 </head>
@@ -115,9 +151,15 @@ header nav a {
 }
 </style>
 <header>
+  <h1></h1>
   <nav><a href="/">HOME</a><a href="/post_list">Posts</a></nav>
 </header>
-  <h1>Hello World</h1>
+  <h1>Hello world!</h1>
+<h2>Hello world!</h2>
+<h3>Hello world!</h3>
+<h4>Hello world!</h4>
+<h5>Hello world!</h5>
+<h6>Hello world!</h6>
 <p>I'm hosted with GitHub Pages.</p>
 
 
