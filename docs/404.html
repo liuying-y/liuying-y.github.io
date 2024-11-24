@@ -22,19 +22,6 @@
   <meta name="keywords" content="Blog, Life-long Learner, Developer, Data Visualization, Video Games">
   <title>Liuying&#39;s Site</title>
   <style>
-  :root {
-    --ly-theme-c-1: #1e2022;
-    --ly-theme-c-2: #52616b;
-    --ly-theme-c-3: #c9d6df;
-    --ly-theme-c-4: #f0f5f9;
-
-    --ly-background-color: var(--ly-theme-c-4);
-    --ly-font-color-1: var(--ly-theme-c-1);
-    --ly-font-color-2: var(--ly-theme-c-2);
-    --ly-font-color-3: var(--ly-theme-c-3);
-  }
-</style>
-  <style>
 html {
   margin: 0;
   padding: 0;
@@ -55,6 +42,10 @@ html {
   html {
     font-size: 16px;
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 *, *:before, *:after {
@@ -127,14 +118,41 @@ table {
 }
 </style>
   <style>
+  :root {
+    --ly-theme-c-1: #1e2022;
+    --ly-theme-c-2: #52616b;
+    --ly-theme-c-3: #c9d6df;
+    --ly-theme-c-4: #f0f5f9;
+
+    --ly-background-color: var(--ly-theme-c-4);
+    --ly-font-color-1: var(--ly-theme-c-1);
+    --ly-font-color-2: var(--ly-theme-c-2);
+    --ly-font-color-3: var(--ly-theme-c-3);
+  }
+</style>
+  <style>
 @font-face {
   font-family: 'main-font';
   src: url("//liuyingpro-website.oss-cn-beijing.aliyuncs.com/fonts/main-font/AlimamaFangYuanTiVF-Thin.woff2") format("woff2"), url("//liuyingpro-website.oss-cn-beijing.aliyuncs.com/fonts/main-font/AlimamaFangYuanTiVF-Thin.woff") format("woff");
   font-display: swap;
 }
 </style>
+<link rel="stylesheet" href="/assert/icon-font/remixicon.css">
   <style>
-
+  .full-background {
+    position: relative;
+    background-color: var(--ly-background-color);
+  }
+  .full-background::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: ' ';
+    z-index: -1;
+    background-color: var(--ly-background-color);
+  }
 </style>
 </head>
 <body>

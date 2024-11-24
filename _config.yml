@@ -32,19 +32,34 @@ favicon: /assert/favicon.ico
 # Author info
 author: Liuying
 email:
+
 ## social account
-github: liuying-y
-stackoverflow: 23873459
-codepen: liuying-y
+# github: liuying-y
+# stackoverflow: 23873459
+# codepen: liuying-y
 patreon: liuying_y
 bilibili: 
 zhihu:
 juejin:
+social:
+  -
+    alias: github
+    url: https://github.com/liuying-y
+    icon: ri-github-fill
+  -
+    alias: stackoverflow
+    url: https://stackoverflow.com/users/23873459/liuying
+    icon: ri-stack-overflow-fill
+  -
+    alias: codepen
+    url: https://codepen.io/liuying-y
+    icon: ri-codepen-fill
+    
 external_social:
   -
+    alias:
     url: 
     icon:
-    alias:
 
 ## operations
 google_analytics:
