@@ -1,12 +1,244 @@
 ---
-layout: with-header
+layout: full-page
+
+section_cover_title: Liuying's Portfolio
 ---
+<style>
+  .home-root {
+    position: relative;
+    height: calc(100vh * 2);
+    touch-action: none;
+  }
+  .home-background::before {
+    content: ' ';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 6vw;
+    width: 3px;
+    background-color: var(--ly-font-color-2);
+  }
+  .home-slice {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 4vw;
+    padding-top: 20vh;
+  }
 
-<h1>Hello world!</h1>
-<h2>Hello world!</h2>
-<h3>Hello world!</h3>
-<h4>Hello world!</h4>
-<h5>Hello world!</h5>
-<h6>Hello world!</h6>
-<p>I'm hosted with GitHub Pages.</p>
+  .home-slice h2 {
+    margin-left: 5vw;
+  }
 
+  .home-slice h3 {
+    margin-left: 10vw;
+  }
+
+  #title-1 {
+    z-index: 2;
+    margin-top: 20vh;
+    position: fixed;
+  }
+
+  #section-1 {
+    padding-top: 20vh;
+  }
+
+
+  #ani-1-1 {
+    position: relative;
+    margin-top: 25vh;
+    margin-left: 5vw;
+  }
+
+  #ani-1-2 {
+    position: relative;
+    margin-top: 10vh;
+  }
+  #ani-2-1 {
+    margin-top: 10vh;
+  }
+
+  #ani-2-2 {
+    margin-top: 8vh;
+  }
+  #ani-2-3 {
+    margin-top: 5vh;
+  }
+
+  .contact-alias {
+    text-transform: uppercase;
+  }
+
+  #ani-3-1 {
+    margin-top: 10vh;
+  }
+
+  #ani-3-2 {
+    list-style: none;
+    display: flex;
+    margin-top: 10vh;
+    margin-left: 35vw;
+  }
+
+  #ani-3-2 li {
+    margin-right: 2.2rem;
+  }
+
+  .icon {
+    position: relative;
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+
+  .icon::before {
+    font-family: 'remixicon' !important;
+    font-size: 2.2rem;
+    position: relative;
+    left: -50%;
+    transition: all .2s ease;
+  }
+
+  .icon-tip {
+    pointer-events: none;
+    touch-action: none;
+
+    font-size: 0.5rem;
+    color: var(--ly-background-color);
+    background-color: var(--ly-font-color-2);
+    padding: 5px;
+    border-radius: 5px;
+
+    opacity: 0;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    transform: translateX(-50%) translateY(-2.2rem);
+    transition: all .2s ease;
+  }
+
+  .icon:hover .icon-tip {
+    transform: translateX(-50%) translateY(-0.5rem);
+    opacity: 1;
+  }
+  .icon:hover::before {
+    transform: scale(1.1);
+  }
+
+</style>
+<div class="home-root">
+  <section class="home-background"></section>
+  <!-- <section id="section-0"><br /></section> -->
+  <h1 id="title-1" class="full-background">{{ page.section_cover_title }}</h1>
+  <section id="section-cover" class="home-slice">
+    <h2 id="ani-1-1" class="">About me</h2>
+    <h3 id="ani-1-2" class="">A Developer</h3>
+  </section>
+  <section id="section-2" class="home-slice">
+    <h2 id="ani-2-1" class="full-background">About this site</h2>
+    <h3 id="ani-2-2" class="full-background">Code demos</h3>
+    <h3 id="ani-2-3" class="full-background">Personal essays</h3>
+  </section>
+  <section id="section-3" class="home-slice">
+    <h2 id="ani-3-1" class="full-background">Contact</h2>
+    <ui id="ani-3-2">
+      {%- for s in site.social -%}
+        <li>
+          <a title="{{ s.alias }}" class="contact-alias" href="{{ s.url }}" target="_blank">
+            <i class="{{ s.icon }} icon">
+              <h5 class="icon-tip">{{ s.alias }}</h5>
+            </i>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ui>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+  // section 1
+  var list = [{
+    triggerInfo: {
+      trigger: "#section-cover",
+      scrub: 0.5,
+      pin: true,
+      start: "top top",
+      end: "+=100%",
+    },
+    anamations: [{
+      target: '#title-1',
+      method: 'from',
+      params: { y: '50vh' },
+    }, {
+      target: '#ani-1-1',
+      method: 'from',
+      params: { autoAlpha: 0 },
+    }, {
+      target: '#ani-1-1',
+      method: 'from',
+      params: { y: '30vh' },
+      position: '-=50%',
+    }, {
+      target: '#ani-1-2',
+      method: 'from',
+      params: { y: '30vh', autoAlpha: 0 },
+      position: '+=100%',
+    }, {
+      target: '#title-1',
+      method: 'to',
+      params: { y: '-20vh' },
+      position: '+=100%',
+    }, {
+      target: '#ani-1-1',
+      method: 'to',
+      params: { y: '-30vh', autoAlpha: 0 },
+      position: '-=100%',
+    }, {
+      target: '#ani-1-2',
+      method: 'to',
+      params: { y: '-30vh', autoAlpha: 0 },
+      position: '-=100%',
+    }, {
+      target: '#ani-2-1',
+      method: 'from',
+      params: { autoAlpha: 0 },
+    }],
+  }, {
+    triggerInfo: {
+      trigger: "#section-2",
+      scrub: 0.5,
+      pin: true,
+      start: "top top",
+      end: "+=100%",
+    },
+    anamations: [{
+      target: '#ani-2-2',
+      method: 'from',
+      params: { y: '29vh', autoAlpha: 0 },
+    }, {
+      target: '#ani-2-3',
+      method: 'from',
+      params: { y: '29vh', autoAlpha: 0 },
+      position: '-=100%',
+    }],
+  }];
+
+  function start() {
+    list.forEach(function(list_ele) {
+      var tl1 = gsap.timeline({
+        scrollTrigger: list_ele.triggerInfo,
+      });
+      list_ele.anamations.forEach((ele) => {
+        console.log('[mm]', ele.method);
+        tl1[ele['method']](ele.target, Object.assign({ anticipatePin: 1}, ele.params), ele.position);
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    gsap.registerPlugin(ScrollTrigger);
+    start();
+  });
+</script>

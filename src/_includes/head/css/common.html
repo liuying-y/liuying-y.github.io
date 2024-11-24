@@ -1,3 +1,16 @@
 <style>
-
+  .full-background {
+    position: relative;
+    background-color: var(--ly-background-color);
+  }
+  .full-background::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: ' ';
+    z-index: -1;
+    background-color: var(--ly-background-color);
+  }
 </style>
