@@ -158,20 +158,37 @@ table {
 <body>
   <!-- header -->
 <style>
+header {
+  display: flex;
+  align-items: flex-end;
+  padding-top: 0.5rem;
+}
+header h1 {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
 header nav {
   display: flex;
+  margin-left: 2rem;
 }
 
 header nav a {
   width: fit-content;
-  padding: 0 0.25rem;
+  padding: 0 0.25rem 0.1rem;
   margin: 0 0.25rem;
+  font-size: 1.3rem;
+  --wght: 700;
+}
+
+header nav a:hover {
+  text-decoration: underline;
 }
 </style>
 <header>
-  <h1></h1>
-  <nav><a href="/">HOME</a><a href="/post_list">Posts</a></nav>
+  <h1>Liuying's Site</h1>
+  <nav><a href="/">HOME</a><a href="/code_list">CODING</a><a href="/essay_list">ESSAY</a></nav>
 </header>
-  post list
+  demo list
 </body>
 </html>
