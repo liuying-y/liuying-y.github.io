@@ -1,12 +1,12 @@
 ---
 layout: full-page
 
-section_cover_title: Liuying's Portfolio
+<!-- section_cover_title: Liuying's Portfolio -->
 ---
 <style>
   .home-root {
     position: relative;
-    height: calc(100vh * 2);
+    height: calc(100vh * 2.5);
     touch-action: none;
   }
   .home-background::before {
@@ -20,7 +20,7 @@ section_cover_title: Liuying's Portfolio
   }
   .home-slice {
     width: 100vw;
-    height: 100vh;
+    height: 50vh;
     position: relative;
     box-sizing: border-box;
     padding-left: 4vw;
@@ -46,6 +46,10 @@ section_cover_title: Liuying's Portfolio
     padding-top: 20vh;
   }
 
+  #section-3 {
+    height: 100vh;
+  }
+
 
   #ani-1-1 {
     position: relative;
@@ -63,9 +67,14 @@ section_cover_title: Liuying's Portfolio
 
   #ani-2-2 {
     margin-top: 8vh;
+    margin-left: 5vw;
   }
-  #ani-2-3 {
-    margin-top: 5vh;
+
+  #ani-2-2 li {
+    margin-top: 4vh;
+  }
+
+  #section-3 {
   }
 
   .contact-alias {
@@ -101,6 +110,7 @@ section_cover_title: Liuying's Portfolio
     font-size: 2.2rem;
     position: relative;
     transition: all .2s ease;
+    display: inline-block;
   }
 
   .icon-tip {
@@ -121,27 +131,48 @@ section_cover_title: Liuying's Portfolio
     transition: all .2s ease;
   }
 
-  .icon:hover .icon-tip {
-    transform: translateX(-50%) translateY(-0.5rem);
-    opacity: 1;
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
   .icon:hover::before {
-    transform: scale(1.1);
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  .icon:hover .icon-tip {
+    transform: translateX(-50%) translateY(-1rem) scale(1.5);
+    opacity: 1;
   }
 
 </style>
 <div class="home-root">
   <section class="home-background"></section>
   <!-- <section id="section-0"><br /></section> -->
-  <h1 id="title-1" class="full-background">{{ page.section_cover_title }}</h1>
+  <h1 id="title-1" class="full-background">{{ site.title }}</h1>
   <section id="section-cover" class="home-slice">
     <h2 id="ani-1-1" class="">About me</h2>
     <h3 id="ani-1-2" class="">A Developer</h3>
   </section>
   <section id="section-2" class="home-slice">
     <h2 id="ani-2-1" class="full-background">About this site</h2>
-    <h3 id="ani-2-2" class="full-background">Code demos</h3>
-    <h3 id="ani-2-3" class="full-background">Personal essays</h3>
+    <ul id="ani-2-2">
+      {%- for bar_item in site.nav_bar_items -%}
+        {%- if bar_item.index_page -%}
+          <li><a href="{{ bar_item.page }}"><h5>{{ bar_item.label }}</h5></a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
   </section>
   <section id="section-3" class="home-slice">
     <ui id="ani-3-2">
@@ -191,7 +222,7 @@ section_cover_title: Liuying's Portfolio
     }, {
       target: '#title-1',
       method: 'to',
-      params: { y: '-20vh' },
+      params: { y: '-15vh' },
       position: '+=100%',
     }, {
       target: '#ani-1-1',
@@ -203,15 +234,11 @@ section_cover_title: Liuying's Portfolio
       method: 'to',
       params: { y: '-30vh', autoAlpha: 0 },
       position: '-=100%',
-    }, {
-      target: '#ani-2-1',
-      method: 'from',
-      params: { autoAlpha: 0 },
     }],
   }, {
     triggerInfo: {
       trigger: "#section-2",
-      scrub: 0.5,
+      scrub: 1,
       pin: true,
       start: "top top",
       end: "+=100%",
@@ -219,11 +246,19 @@ section_cover_title: Liuying's Portfolio
     anamations: [{
       target: '#ani-2-2',
       method: 'from',
-      params: { y: '29vh', autoAlpha: 0 },
+      params: { y: '30vh', autoAlpha: 0 },
     }, {
-      target: '#ani-2-3',
-      method: 'from',
-      params: { y: '29vh', autoAlpha: 0 },
+      target: '#ani-2-2',
+      method: 'to',
+      params: { y: '0' },
+    }, {
+      target: '#ani-2-2',
+      method: 'to',
+      params: { y: '30vh', autoAlpha: 0 },
+    }, {
+      target: '#ani-2-1',
+      method: 'to',
+      params: { y: '30vh', autoAlpha: 0 },
       position: '-=100%',
     }],
   }, {
@@ -238,6 +273,10 @@ section_cover_title: Liuying's Portfolio
       target: '#ani-3-2',
       method: 'from',
       params: { y: '-50vh', scale: 1.2, autoAlpha: 0, transformOrigin: "center center" },
+    }, {
+      target: '#ani-3-1',
+      method: 'from',
+      params: { rotate: 100, scale: 0, autoAlpha: 0, transformOrigin: "center center" },
     }],
   }];
 

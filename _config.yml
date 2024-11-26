@@ -70,6 +70,12 @@ nav_bar_items:
   -
     label: HOME
     page: /
+    index_page: false
   -
-    label: Posts
-    page: /post_list
+    label: CODING
+    page: /code_list
+    index_page: true
+  -
+    label: ESSAY
+    page: /essay_list
+    index_page: true
