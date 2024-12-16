@@ -1,3 +1,10 @@
+# app system
+.DS_store
+
+# ide
+.vscode
+
+
 # Jekyll
 _site/
 .env
