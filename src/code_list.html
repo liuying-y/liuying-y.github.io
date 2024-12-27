@@ -1,4 +1,38 @@
 ---
-layout: with-header
+layout: list-with-header
 ---
-demo list
+<style>
+  .group {
+    margin-bottom: 20px;
+  }
+  .group_header {
+    font-size: 12px;
+  }
+  .post_list {
+    margin-top: 15px;
+  }
+  .post_item {
+    margin-bottom: 5px;
+  }
+  .post_item:hover {
+    color: var(--ly-font-color-1);
+  }
+</style>
+
+<ul>
+  {% for category in site.categories %}
+    {% if category[0] != 'code' %}
+    <li class="group">
+      <div class="group_header">
+        {{ category[0] }}
+        <!-- {{ category[0] }} ({{ category[1].size }}) -->
+      </div>
+      <ul class="post_list">
+        {% for post in category[1] %}
+          <li class="post_item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+  {% endfor %}
+</ul>
