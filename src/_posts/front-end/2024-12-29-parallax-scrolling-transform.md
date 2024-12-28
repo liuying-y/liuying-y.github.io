@@ -144,16 +144,16 @@ summary:
 
 </style>
 <div class="home-root">
-  <h1 id="title-1" class="layer" style="--z: -0.11px;">{{ page.title }}</h1>
-  <h2 id="ani-1-1" class="layer" style="--z: -0.2px;">基于transform</h2>
-  <h3 id="ani-1-2" class="layer" style="--z: -2px;">总体评价：用css实现，快速上手，但是要做出好效果非常不容易</h3>
-  <h2 id="ani-2-1" class="layer" style="--z: -0.3px;">技术核心有几点</h2>
-  <ul id="ani-2-2" class="layer" style="--z: -0.1px;">
+  <h1 id="title-1" class="layer" data-z="-1">{{ page.title }}</h1>
+  <h2 id="ani-1-1" class="layer" data-z="-1">基于transform</h2>
+  <h3 id="ani-1-2" class="layer" data-z="-0.2">总体评价：用css实现，快速上手，但是要做出好效果非常不容易</h3>
+  <h2 id="ani-2-1" class="layer" data-z="-1">技术核心有几点</h2>
+  <ul id="ani-2-2" class="layer" data-z="-0.1">
     <li>父元素设置 perspective</li>
     <li>子元素设置 translateZ</li>
     <li>滚动时更新 translateY</li>
   </ul>
-  <ui id="ani-3-2" class="layer" style="--z: -1px;">
+  <ui id="ani-3-2" class="layer" data-z="-1">
     {%- for s in site.social -%}
       <li>
         <a title="{{ s.alias }}" class="contact-alias" href="{{ s.url }}" target="_blank">
@@ -164,7 +164,7 @@ summary:
       </li>
     {%- endfor -%}
   </ui>
-  <h6 id="ani-3-1" class="layer" style="--z: -1px;">Contact</h6>
+  <h6 id="ani-3-1" class="layer" data-z="-1">Contact</h6>
 </div>
 
 <script>
@@ -174,7 +174,7 @@ const layers = document.querySelectorAll('.layer');
 function handleScroll() {
   const scrollPosition = scene.getBoundingClientRect().top;
   layers.forEach(layer => {
-    const depth = layer.style('--z').replace('px', '');
+    const depth = parseFloat(layer.dataset['z']);
     const factor = -(depth / Math.abs(depth)) * Math.min(Math.abs(depth), Math.abs(scrollPosition));
     layer.style.transform = `translateZ(${depth}px) translateY(${factor}px)`;
   });
