@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!-- head -->
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="/assert/libs/google-gtag.js?id=G-SSFR60SVY2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SSFR60SVY2');
+</script>
+  <meta charset="utf-8">
+  <meta name="author" content="Liuying" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" type="image/png" href="/assert/favicon.ico">
+  <meta name="description" content="">
+  <meta name="keywords" content="Blog, Life-long Learner, Developer, Data Visualization, Video Games">
+  <title>视差滚动 02-transform</title>
+  <style>
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 32px;
+  color: var(--ly-font-color-2);
+  background-color: var(--ly-background-color);
+  min-width: 800px;
+}
+
+@media screen and (max-width:1600px) and (min-width:800px) {
+  html {
+    font-size: 2vw;
+  }
+  
+}
+
+@media screen and (max-width:800px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+
+  font-family: 'main-font', 'PingFang SC';
+  --wght: 400;
+  --BEVL: 20;
+  font-variation-settings: 'wght' var(--wght), 'BEVL' var(--BEVL);
+}
+
+body, div, h1, h2, h3, h4, h5, h6, p, ol, ul, dl, figure, form, img, video, pre, iframe, blockquote, table {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ly-font-color-1);
+  --wght: 700;
+  --BEVL: 100;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+
+}
+h5 {
+  font-size: 1.4rem;
+}
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+</style>
+  <style>
+  :root {
+    --ly-theme-c-1: #1e2022;
+    --ly-theme-c-2: #52616b;
+    --ly-theme-c-3: #c9d6df;
+    --ly-theme-c-4: #f0f5f9;
+
+    --ly-background-color: var(--ly-theme-c-4);
+    --ly-font-color-1: var(--ly-theme-c-1);
+    --ly-font-color-2: var(--ly-theme-c-2);
+    --ly-font-color-3: var(--ly-theme-c-3);
+  }
+</style>
+  <style>
+@font-face {
+  font-family: 'main-font';
+  src: url("//liuyingpro-website.oss-cn-beijing.aliyuncs.com/fonts/main-font/AlimamaFangYuanTiVF-Thin.woff2") format("woff2"), url("//liuyingpro-website.oss-cn-beijing.aliyuncs.com/fonts/main-font/AlimamaFangYuanTiVF-Thin.woff") format("woff");
+  font-display: swap;
+}
+</style>
+<link rel="stylesheet" href="/assert/icon-font/remixicon.css">
+  <style>
+  .full-background {
+    position: relative;
+    background-color: var(--ly-background-color);
+  }
+  .full-background::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: ' ';
+    z-index: -1;
+    background-color: var(--ly-background-color);
+  }
+</style>
+</head>
+<body>
+  <style>
+  .home-root {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(var(--z));
+    backface-visibility: hidden; /* 改善性能 */
+  }
+
+  #title-1 {
+    z-index: 2;
+    top: 30vh;
+  }
+
+  #ani-1-1 {
+    position: relative;
+    margin-top: 10vh;
+    margin-left: 5vw;
+    transform: translateZ(-0.02px);
+    top: 50vh;
+  }
+
+  #ani-1-2 {
+    position: relative;
+    margin-top: 10vh;
+    top: 120vh;
+    transform: translateZ(-0.9px);
+  }
+  #ani-2-1 {
+    margin-top: 10vh;
+    top: 200vh;
+  }
+
+  #ani-2-2 {
+    margin-top: 8vh;
+    margin-left: 5vw;
+    top: 220vh;
+  }
+
+  #ani-2-2 li {
+    margin-top: 4vh;
+  }
+
+  .contact-alias {
+    text-transform: uppercase;
+  }
+
+  #ani-3-1 {
+    margin-top: 5vh;
+    text-align: center;
+    text-transform: uppercase;
+    top: 330vh;
+  }
+
+  #ani-3-2 {
+    list-style: none;
+    display: flex;
+    margin: 20vh auto 0;
+    width: fit-content;
+    top: 330vh;
+  }
+
+  #ani-3-2 li {
+    margin-right: 1.1rem;
+    margin-left: 1.1rem;
+  }
+
+  .icon {
+    position: relative;
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+
+  .icon::before {
+    font-family: 'remixicon' !important;
+    font-size: 2.2rem;
+    position: relative;
+    transition: all .2s ease;
+    display: inline-block;
+  }
+
+  .icon-tip {
+    pointer-events: none;
+    touch-action: none;
+
+    font-size: 0.5rem;
+    color: var(--ly-background-color);
+    background-color: var(--ly-font-color-2);
+    padding: 5px;
+    border-radius: 5px;
+
+    opacity: 0;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-2.2rem);
+    transition: all .2s ease;
+  }
+
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  .icon:hover::before {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  .icon:hover .icon-tip {
+    transform: translateX(-50%) translateY(-1rem) scale(1.5);
+    opacity: 1;
+  }
+
+</style>
+
+<div class="home-root">
+  <h1 id="title-1" class="layer" style="--z: -0.11px;">视差滚动 02-transform</h1>
+  <h2 id="ani-1-1" class="layer" style="--z: -0.2px;">基于transform</h2>
+  <h3 id="ani-1-2" class="layer" style="--z: -2px;">总体评价：用css实现，快速上手，但是要做出好效果非常不容易</h3>
+  <h2 id="ani-2-1" class="layer" style="--z: -0.3px;">技术核心有几点</h2>
+  <ul id="ani-2-2" class="layer" style="--z: -0.1px;">
+    <li>父元素设置 perspective</li>
+    <li>子元素设置 translateZ</li>
+    <li>滚动时更新 translateY</li>
+  </ul>
+  <ui id="ani-3-2" class="layer" style="--z: -1px;"><li>
+        <a title="github" class="contact-alias" href="https://github.com/liuying-y" target="_blank">
+          <i class="ri-github-fill icon">
+            <h5 class="icon-tip">github</h5>
+          </i>
+        </a>
+      </li><li>
+        <a title="stackoverflow" class="contact-alias" href="https://stackoverflow.com/users/23873459/liuying" target="_blank">
+          <i class="ri-stack-overflow-fill icon">
+            <h5 class="icon-tip">stackoverflow</h5>
+          </i>
+        </a>
+      </li><li>
+        <a title="codepen" class="contact-alias" href="https://codepen.io/liuying-y" target="_blank">
+          <i class="ri-codepen-fill icon">
+            <h5 class="icon-tip">codepen</h5>
+          </i>
+        </a>
+      </li></ui>
+  <h6 id="ani-3-1" class="layer" style="--z: -1px;">Contact</h6>
+</div>
+
+<script>
+const scene = document.querySelector('.home-root');
+const layers = document.querySelectorAll('.layer');
+
+function handleScroll() {
+  const scrollPosition = scene.getBoundingClientRect().top;
+  layers.forEach(layer => {
+    const depth = layer.style('--z').replace('px', '');
+    const factor = -(depth / Math.abs(depth)) * Math.min(Math.abs(depth), Math.abs(scrollPosition));
+    layer.style.transform = `translateZ(${depth}px) translateY(${factor}px)`;
+  });
+}
+
+// 监听滚动事件
+scene.addEventListener('scroll', handleScroll);
+window.addEventListener('resize', handleScroll);
+
+// 初始化调用
+handleScroll();
+
+</script>
+
+
+</body>
+</html>
