@@ -332,7 +332,6 @@ const layers = document.querySelectorAll('.layer');
 function handleScroll() {
   const scrollPosition = scene.getBoundingClientRect().top;
   layers.forEach(layer => {
-    console.log('==', layer);
     const depth = parseFloat(layer.dataset['z']);
     const factor = -(depth / Math.abs(depth)) * Math.min(Math.abs(depth), Math.abs(scrollPosition));
     layer.style.transform = `translateZ(${depth}px) translateY(${factor}px)`;
