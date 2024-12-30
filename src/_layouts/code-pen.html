@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+{% include head/head.html %}
+<style>
+  .full-screen-iframe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.full-screen-iframe iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+</style>
+<body>
+  <div class="full-screen-iframe">
+
+    <iframe scrolling="no" title="{{ page.title }}" src="https://codepen.io/liuying-y/embed/{{ page.code_pen }}" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href='code_pen'>A Pen Title</a> by User
+      (<a href="https://codepen.io/liuying-y">@liuying-y</a>) on <a href="https://codepen.io">CodePen</a>.
+    </iframe>
+  </div>
+</body>
+</html>
