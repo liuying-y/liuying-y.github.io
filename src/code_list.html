@@ -21,18 +21,20 @@ layout: list-with-header
 
 <ul>
   {% for category in site.categories %}
-    {% if category[0] != 'code' %}
-    <li class="group">
-      <div class="group_header">
-        {{ category[0] }}
-        <!-- {{ category[0] }} ({{ category[1].size }}) -->
-      </div>
-      <ul class="post_list">
-        {% for post in category[1] %}
-          <li class="post_item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </li>
+    {% if category[0] != 'code' and category[0] != 'essay' %}
+      <li class="group">
+        <div class="group_header">
+          {{ category[0] }}
+          <!-- {{ category[0] }} ({{ category[1].size }}) -->
+        </div>
+        <ul class="post_list">
+          {% for post in category[1] %}
+            {% if post.categories[0] == 'code' %}
+              <li class="post_item"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
     {% endif %}
   {% endfor %}
 </ul>
