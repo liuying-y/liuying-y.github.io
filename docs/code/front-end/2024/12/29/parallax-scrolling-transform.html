@@ -186,15 +186,17 @@ table {
     position: relative;
     margin-top: 10vh;
     margin-left: 5vw;
-    transform: translateZ(-0.02px);
     top: 50vh;
   }
 
   #ani-1-2 {
     position: relative;
     margin-top: 10vh;
-    top: 120vh;
-    transform: translateZ(-0.9px);
+    top: 100vh;
+  }
+  #ani-1-3 {
+    position: relative;
+    top: 140vh;
   }
   #ani-2-1 {
     margin-top: 10vh;
@@ -294,11 +296,12 @@ table {
 </style>
 
 <div class="home-root">
-  <h1 id="title-1" class="layer" data-z="-1">视差滚动 02-transform</h1>
-  <h2 id="ani-1-1" class="layer" data-z="-1">基于transform</h2>
-  <h3 id="ani-1-2" class="layer" data-z="-0.2">总体评价：用css实现，快速上手，但是要做出好效果非常不容易</h3>
-  <h2 id="ani-2-1" class="layer" data-z="-1">技术核心有几点</h2>
-  <ul id="ani-2-2" class="layer" data-z="-0.1">
+  <h1 id="title-1" class="layer" data-z="-0.1">视差滚动 02-transform</h1>
+  <h2 id="ani-1-1" class="layer" data-z="-0.2">基于transform</h2>
+  <h3 id="ani-1-2" class="layer" data-z="-0.5">总体评价：用css实现，快速上手，但是要做出好效果非常不容易</h3>
+  <h3 id="ani-1-3" class="layer" data-z="-0.4">另外，控制tanslateY比较方便，同时控制其它效果就麻烦一些</h3>
+  <h2 id="ani-2-1" class="layer" data-z="-0.1">技术核心有几点</h2>
+  <ul id="ani-2-2" class="layer" data-z="-0.2">
     <li>父元素设置 perspective</li>
     <li>子元素设置 translateZ</li>
     <li>滚动时更新 translateY</li>
@@ -322,7 +325,7 @@ table {
           </i>
         </a>
       </li></ui>
-  <h6 id="ani-3-1" class="layer" data-z="-1">Contact</h6>
+  <h6 id="ani-3-1" class="layer" data-z="-0.2">Contact</h6>
 </div>
 
 <script>
